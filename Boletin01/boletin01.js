@@ -58,40 +58,131 @@ function nomina() {
 
 // 6. Conversión de segundos. Dado un número de segundos, calcula cuántas horas,
 // minutos y segundos representa.
-function calculaTiempo(){
-    let segundosInicial=59877;
+function calculaTiempo() {
+    let segundosInicial = 59877;
 
-    let horas= parseInt(segundosInicial/3600);
-    let minutos= parseInt((segundosInicial%3600)/60);
-    let segundos= parseInt((segundosInicial%3600)%60);
+    let horas = parseInt(segundosInicial / 3600);
+    let minutos = parseInt((segundosInicial % 3600) / 60);
+    let segundos = parseInt((segundosInicial % 3600) % 60);
 
     console.log(`${segundosInicial} segundos son ${horas} horas, ${minutos} minutos y ${segundos} segundos`);
 }
 
-calculaTiempo();
+// calculaTiempo();
 
 // 7. Intercambio de valores. Declara dos variables a y b e intercambia sus valores.
 // Muestra el resultado antes y después del intercambio.
+function intercambioValores() {
+    let a = 5;
+    let aux = a;
+    console.log(`A vale ${a}`);
+    let b = 10;
+    console.log(`B vale ${b}`);
+    a = b;
+    b = aux;
+    console.log(`A vale ${a}`);
+    console.log(`B vale ${b}`);
+}
 
+// intercambioValores();
 
 // 8. Mayor de edad. Dada una edad, indica mediante un mensaje si la persona es
 // mayor o menor de edad.
+function mayorEdad() {
+    let edad = window.prompt("Dame tu edad");
 
+    if (edad >= 18) {
+        console.log("Eres mayor de edad");
+    }
+    else {
+        console.log("Eres menor de edad");
+    }
+}
+
+// mayorEdad();
 
 // 9. Número positivo, negativo o cero. Dado un número, indica si es positivo,
 // negativo o igual a cero.
+function tipoNum() {
+    let num = window.prompt("Dame un numero");
 
+    if (num < 0) {
+        console.log("El numero es negativo");
+    }
+    else if (num == 0) {
+        console.log("El numero es cero");
+    }
+    else {
+        console.log("El numero es positivo");
+    }
+}
+
+// tipoNum();
 
 // 10. Número mayor. Dados dos números, muestra cuál de ellos es mayor o indica si
 // son iguales.
+function comparaNums() {
+    let num1 = window.prompt("Dame el numero 1");
+    let num2 = window.prompt("Dame el numero 2");
 
+    if (num1 > num2) {
+        console.log(`${num1} es mayor que ${num2}`);
+    }
+    else if (num2 > num1) {
+        console.log(`${num2} es mayor que ${num1}`);
+    }
+    else {
+        console.log(`Los numeros introducidos son iguales`);
+
+    }
+}
+
+// comparaNums();
 
 // 11. Calificación. Dada una nota entre 0 y 10, muestra si corresponde a un suspenso,
 // aprobado, notable o sobresaliente.
+function nota() {
+    let nota = parseInt(window.prompt("Dame tu nota: "));
 
+    switch (true) {
+        case (nota >= 0 && nota < 5):
+            console.log("Insuficiente");
+            break;
+
+        case (nota == 5):
+            console.log("Suficiente");
+            break;
+
+        case (nota == 6):
+            console.log("Bien");
+            break;
+
+        case (nota >= 7 && nota <= 8):
+            console.log("Notable");
+            break;
+
+        case (nota >= 9 && nota <= 10):
+            console.log("Sobresaliente")
+            break;
+
+    }
+}
+
+// nota();
 
 // 12. Año bisiesto. Dado un año, determina si es bisiesto.
+function anyoBisiesto() {
+    let anyo = window.prompt("Dime un año");
 
+    if ((anyo % 4 == 0 && anyo % 100 != 0) || anyo % 400 == 0) {
+        console.log("El año introducido es bisiesto")
+    }
+    else {
+        console.log("El año introducido no es bisiesto")
+    }
+}
+
+// anyoBisiesto();
 
 // 13. Calculadora. Dados dos números y un operador (+, -, * o /), realiza la operación
 // correspondiente utilizando una estructura de selección.
@@ -99,24 +190,74 @@ calculaTiempo();
 
 // 14. Números del 1 al 10. Muestra por consola los números del 1 al 10 utilizando una
 // estructura de repetición.
+function cuenta10() {
+    for (let i = 1; i <= 10; i++) {
+        console.log(i);
+    }
+}
 
+// cuenta10();
 
 // 15. Números pares. Muestra todos los números pares comprendidos entre 1 y 100.
+function pares100() {
+    for (let i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+            console.log(i);
+        }
+    }
+}
 
+// pares100();
 
 // 16. Tabla de multiplicar. Dado un número, muestra su tabla de multiplicar del 1 al 10.
+function tablaMult() {
+    let num= window.prompt("Dame un numero");
+    for (let i = 1; i <= 10; i++) {
+        let result= num*i;
+        console.log(`${num} x ${i} = ${result}`);
+    }
+}
 
+// tablaMult();
 
 // 17. Suma hasta N. Dado un número N, calcula la suma de todos los números
 // comprendidos entre 1 y N.
+function sumaN() {
+    let num = parseInt(window.prompt("Dame un numero: "));
+    let result = 0;
 
+        for (let i = 1; i <= num; i++) {
+            result += i;
+        }
+        console.log(result);
+}
+
+// sumaN();
 
 // 18. Factorial. Dado un número entero positivo, calcula y muestra su factorial.
+function factorial() {
+    let num = parseInt(window.prompt("Dame un numero: "));
+    let result = 1;
 
+    if (num > 0) {
+        for (let i = 2; i <= num; i++) {
+            result *= i;
+        }
+        console.log(result);
+    } else {
+        console.log("Numero no permitido");
+    }
+}
+
+// factorial();
 
 // 19. Múltiplos de 3. Dado un número N, muestra todos los múltiplos de 3
 // comprendidos entre 1 y N.
+function mutiplos3(){
+    let num = window.prompt();
 
+    
+}
 
 // 20. Función saludar. Crea una función saludar(nombre) que reciba un nombre como
 // parámetro y muestre un saludo personalizado.
