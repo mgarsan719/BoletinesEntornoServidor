@@ -211,9 +211,9 @@ function pares100() {
 
 // 16. Tabla de multiplicar. Dado un número, muestra su tabla de multiplicar del 1 al 10.
 function tablaMult() {
-    let num= window.prompt("Dame un numero");
+    let num = window.prompt("Dame un numero");
     for (let i = 1; i <= 10; i++) {
-        let result= num*i;
+        let result = num * i;
         console.log(`${num} x ${i} = ${result}`);
     }
 }
@@ -226,10 +226,10 @@ function sumaN() {
     let num = parseInt(window.prompt("Dame un numero: "));
     let result = 0;
 
-        for (let i = 1; i <= num; i++) {
-            result += i;
-        }
-        console.log(result);
+    for (let i = 1; i <= num; i++) {
+        result += i;
+    }
+    console.log(result);
 }
 
 // sumaN();
@@ -253,15 +253,19 @@ function factorial() {
 
 // 19. Múltiplos de 3. Dado un número N, muestra todos los múltiplos de 3
 // comprendidos entre 1 y N.
-function mutiplos3(){
+function mutiplos3() {
     let num = window.prompt();
 
-    
+
 }
 
 // 20. Función saludar. Crea una función saludar(nombre) que reciba un nombre como
 // parámetro y muestre un saludo personalizado.
+function saluda(nombre) {
+    console.log(`Hola ${nombre}`);
+}
 
+saluda("Mario");
 
 // 21. Función para calcular un área. Crea una función calcularArea(base, altura) que
 // reciba la base y la altura de un rectángulo y devuelva su área.
@@ -318,7 +322,38 @@ function mutiplos3(){
 // para calcular la nota media y determinar la calificación final: Suspenso, Aprobado,
 // Notable o Sobresaliente. Comprueba que las notas introducidas estén
 // comprendidas entre 0 y 10.
+function act31() {
+    let num_notas = parseInt(window.prompt("Introduce el numero de notas"));
+    let acum_notas = 0;
+    for (let i = 0; i < num_notas; i++) {
+        let nota = parseFloat(window.prompt(`Introduce la nota ${i}`))
+        acum_notas += nota;
+    }
 
+    const nota_final = acum_notas / num_notas;
+    console.log(nota_final);
+
+    let result;
+    switch (true) {
+        case nota_final >= 0 && nota_final < 5:
+            result = "SUSPENSO";
+            break;
+        case nota_final === 5:
+            result = "SUFICIENTE";
+            break;
+        case nota_final > 5 && nota_final < 7:
+            result = "BIEN";
+            break;
+        case nota_final > 6 && nota_final < 9:
+            result = "NOTABLE";
+            break;
+        case nota_final > 8 && nota_final <= 10:
+            result = "SOBRESALIENTE";
+            break;
+    }
+}
+
+// act31();
 
 // 32. Cajero automático. Simula el funcionamiento de un cajero automático. El usuario
 // comienza con un saldo determinado y puede consultar su saldo, retirar dinero,
@@ -326,14 +361,106 @@ function mutiplos3(){
 // que se repita hasta seleccionar la opción de salida. El programa deberá impedir
 // retirar una cantidad superior al saldo disponible y cantidades negativas o iguales a
 // cero.
+function act32() {
+    let saldo = 1000;
+    let entrar = true;
+    do {
+        let opc = parseInt(window.prompt("Intoduzca una opcion: \n"
+            + "1. Consultar saldo \n"
+            + "2. Retirar dinero \n"
+            + "3. Ingresar dinero\n"
+            + "4. Salir\n"));
 
+        switch (opc) {
+            case 1:
+                console.log(`Tu saldo actual es ${saldo}€`);
+                break;
+            case 2:
+                const retirar = parseFloat(window.prompt("Diga que cantidad desea retirar de su cuenta"));
+                saldo = retirar_dinero(saldo, retirar);
+                console.log(`Tu saldo actual es ${saldo}€`);
+                break;
+            case 3:
+                const ingresar = parseFloat(window.prompt("Diga la cantidad que desea ingresar en su cuenta"));
+                saldo = ingresar_dinero(saldo, ingresar);
+                console.log(`Tu saldo actual es ${saldo}€`);
+                break;
+            case 4:
+                console.log("Gracias por utilizar nuestro cajero");
+                entrar = false;
+                break;
+            default:
+                console.error("Introduzca una opcion valida");
+                break;
+
+        }
+    } while (entrar);
+
+}
+
+// act32();
+
+function retirar_dinero(saldo, retirar) {
+    let result = saldo;
+    if (saldo < retirar) {
+        console.log("No se puede retirar mas dinero del que tienes");
+    }
+    else if (retirar <= 0 && isNaN(retirar)) {
+        console.log("Introduzca una cantidad valida")
+    }
+    else {
+        result = saldo - retirar;
+    }
+
+    return result;
+
+}
+
+function ingresar_dinero(saldo, ingresar) {
+    let result = saldo;
+    if (ingresar <= 0 && isNaN(ingresar)) {
+        console.log("Introduzca una cantidad valida")
+    }
+    else {
+        result = saldo + ingresar;
+    }
+
+    return result;
+
+}
 
 // 33. Juego de adivinanza. Crea un juego en el que el programa genere un número
 // aleatorio entre 1 y 100 y el usuario tenga que adivinarlo. Después de cada intento,
 // el programa indicará si el número introducido es mayor o menor que el número
 // secreto. El juego deberá contar el número de intentos y finalizar cuando el jugador
 // acierte. Organiza el programa utilizando funciones.
+function adivina() {
+    let aleatorio = Math.floor(Math.random() * 100 + 1);
+    let intentos = 1
+    do {
+        console.log(`Intento ${intentos}`)
+        var respuesta = parseInt(window.prompt("Dime un numero"));
+        console.log(`Numero introducido ${respuesta}`);
 
+        if (isNaN(respuesta)) {
+            console.log("Introduce una respuesta valida");
+        }
+        else if (respuesta > aleatorio) {
+            console.log("El numero generado es menor");
+            intentos++;
+        }
+        else {
+            console.log("El numero generado es mayor");
+            intentos++;
+        }
+
+    } while (respuesta != aleatorio);
+
+    console.log(`Has acertado el numero en ${intentos - 1} intentos`);
+
+}
+
+adivina();
 
 // 34. Conversor de unidades. Crea un programa que permita convertir diferentes
 // unidades. El usuario podrá elegir entre convertir kilómetros a millas, grados
